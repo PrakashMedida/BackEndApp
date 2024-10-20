@@ -14,7 +14,7 @@ const login = async (req, res) => {
     const log = await bcrypt.compare(password, user.password);
     
     if(log) {
-      const token = await jwt.sign({_id :user._id},"TonyStark@IronMan",{expiresIn:"7d"});
+      const token = await jwt.sign({_id :user._id},"process.env.SALT",{expiresIn:"7d"});
       
       res.cookie("F_2_0", token, {
         httpOnly: true,
