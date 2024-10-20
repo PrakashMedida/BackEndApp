@@ -8,10 +8,9 @@ const requestRouter = require("./scr/routes/connectionReq.js");
 const userRouter = require("./scr/routes/user.js");
 const cors=require("cors")
 const app = express();
-const PORT = 7777;
 
 app.use(cors({
-  origin: "https://devmatecom.netlify.app",
+  origin: "process.env.YOURWEBAPPURL",
     credentials: true
 }))
 
@@ -28,10 +27,10 @@ app.use("/",userRouter);
 DatabaseConnect()
   .then(() => {
     console.log("Database is connected!");
-    app.listen(PORT, () => {
-      console.log(`Server running at port number ${PORT} `);
+    app.listen(process.env.PORT, () => {
+      console.log(`Server running at port number ${process.env.PORT} `);
     });
   })
   .catch((err) => {
-    console.log(` Error  ${PORT} `);
+    console.log(` Error  ${process.env.PORT} `);
   });
