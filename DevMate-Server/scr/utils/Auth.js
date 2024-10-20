@@ -6,7 +6,7 @@ const Auth = async (req, res, next) => {
     if (!F_2_0) {
       throw new Error("login");
     }
-    const decodeString = await jwt.verify(F_2_0, "TonyStark@IronMan");
+    const decodeString = await jwt.verify(F_2_0, "process.env.SALT");
     const { _id } = decodeString;
     const isuser = await User.findById({ _id });
     if (!isuser) {
