@@ -11,7 +11,7 @@ const app = express();
 const PORT = 7777;
 
 app.use(cors({
-  origin: "https://devmatecom.netlify.app",
+  origin: "", //your frontend app url
     credentials: true
 }))
 
